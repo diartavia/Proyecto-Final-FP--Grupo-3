@@ -36,7 +36,7 @@ public class Biblioteca {
                 break;
             }
         }
-        if (usuario == null) {
+        if (usuario == null) { //si el usuario no se encontro, el valor de usuario no cambio,  por ende sigue null, por eso se saldria
             System.out.println("Usuario con email " + emailUsuario + " no encontrado");
             return;
         }
@@ -59,7 +59,7 @@ public class Biblioteca {
         }
 
         // Crear y asigna el prestamo al usuario
-        Prestamo nuevoPrestamo = new Prestamo(libro, new Date(), fechaDevolucion);
+        Prestamo nuevoPrestamo = new Prestamo(libro, new Date(), fechaDevolucion); //cambiar el tipo DATE
         usuario.agregarPrestamo(nuevoPrestamo);
 
         System.out.println("Prestamo registrado para el usuario: " + usuario.getEmail());

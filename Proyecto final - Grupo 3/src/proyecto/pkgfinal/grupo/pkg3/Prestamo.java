@@ -5,8 +5,8 @@ import java.util.Date;
 public class Prestamo{
     //variables
     private Libro libroprestado;
-    private Date fechaprestamo;
-    private Date fechadevolucion;
+    private Date fechaprestamo; //cambiar el tipo DATE
+    private Date fechadevolucion; //cambiar el tipo DATE
     
     //constructor
     public Prestamo(Libro libroprestado, Date fechaprestamo, Date fechadevolucion) {

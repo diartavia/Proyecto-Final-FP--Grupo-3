@@ -22,7 +22,7 @@ public class ProyectoFinalGrupo3 {
         biblioteca.nuevoUsuario(usuario2);//lo agrega
 
         // Registrar un préstamo para un usuario
-        Date fechaDevolucion = new Date(System.currentTimeMillis() + 7L * 24 * 60 * 60 * 1000);  // Una semana después
+        Date fechaDevolucion = new Date(System.currentTimeMillis() + 7L * 24 * 60 * 60 * 1000);  // Una semana después  //cambiar el tipo DATE
         biblioteca.registrarPrestamoAUsuario("juan@correo.com", "123456789", fechaDevolucion);
 
         // Para mostrar los préstamos de un usuario
