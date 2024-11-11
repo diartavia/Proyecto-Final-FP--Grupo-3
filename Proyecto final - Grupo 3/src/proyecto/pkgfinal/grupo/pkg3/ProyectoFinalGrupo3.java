@@ -14,7 +14,8 @@ public class ProyectoFinalGrupo3 {
         biblioteca.nuevoLibro(libro1); //lo agrega
         Libro libro2 = new Libro("1984", "George Orwell", "987654321", "Ficción"); //lo crea
         biblioteca.nuevoLibro(libro2); //lo agrega
-
+        Libro libro3 = new Libro("lllalald", "George Orwell", "9876543fs21", "Ficc2fdsión"); //lo crea
+        biblioteca.nuevoLibro(libro3); //lo agrega
         //------------- Para crear libros y agregarlos
         Usuario usuario1 = new Usuario("juan@correo.com", "1234");//lo crea
         biblioteca.nuevoUsuario(usuario1);//lo agrega
