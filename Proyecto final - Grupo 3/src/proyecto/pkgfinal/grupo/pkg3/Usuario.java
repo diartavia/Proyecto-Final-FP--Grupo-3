@@ -4,21 +4,31 @@ import java.util.ArrayList;
 
 public class Usuario {
     //Atributos
+    private String Usuario;
     private String email;
     private String password;
     private int prestamos;
     private ArrayList<Prestamo> historialPrestamos;
     
     //constructor 
-    public Usuario(String email, String password) {
+    public Usuario(String email, String password, String usuario) {
+        this.Usuario = usuario;
         this.email = email;
         this.password = password;
         this.prestamos = 0;
         this.historialPrestamos = new ArrayList<>();
     }
     
-    
     //Gets y sets
+    //----------Usuario--------------//
+    public String getUsuario() {
+        return Usuario;
+    }
+    
+    public void setUsuario(String Usuario) {    
+        this.Usuario = Usuario;
+    }
+
     //----------Email--------------//
     public String getEmail() {
         return email;
@@ -47,7 +57,7 @@ public class Usuario {
     //to string
     @Override
     public String toString() {
-        return "Usuario{" + "email=" + email + ", password=" + password + ", prestamos=" + prestamos + '}';
+        return "Usuario{" + "email=" + email + ", password=" + password + ", prestamos=" + prestamos +", Usuario=" + Usuario + '}';
     }
     
     //otros metodos
