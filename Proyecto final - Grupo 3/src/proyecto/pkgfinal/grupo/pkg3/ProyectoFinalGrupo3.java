@@ -8,6 +8,7 @@ public class ProyectoFinalGrupo3 {
     public static void main(String[] args) {
         //Ejecucion de las clases 
         Biblioteca biblioteca = new Biblioteca();
+        Libro libro = new Libro();
         //menú para que el usuario decida que hacer.
         Scanner scanner = new Scanner(System.in);
         int opcion = 0;
@@ -46,15 +47,7 @@ public class ProyectoFinalGrupo3 {
 
                 case 2:
                     // Editar libro
-                    System.out.print("Ingrese el ISBN del libro a editar: ");
-                    String isbnEditar = scanner.nextLine();
-                    System.out.print("Ingrese el nuevo título del libro: ");
-                    String nuevoTitulo = scanner.nextLine();
-                    System.out.print("Ingrese el nuevo autor del libro: ");
-                    String nuevoAutor = scanner.nextLine();
-                    System.out.print("Ingrese el nuevo género del libro: ");
-                    String nuevoGenero = scanner.nextLine();
-                    biblioteca.editarLibro(isbnEditar, nuevoTitulo, nuevoAutor, nuevoGenero);
+                    biblioteca.editarLibro();
                     break;
 
                 case 3:
@@ -79,20 +72,14 @@ public class ProyectoFinalGrupo3 {
 
                 case 5:
                     // Editar usuario
-                    System.out.print("Ingrese el email del usuario a editar: ");
-                    String emailEditar = scanner.nextLine();
-                    System.out.print("Ingrese el nuevo nombre del usuario: ");
-                    String nuevoNombreUsuario = scanner.nextLine();
-                    System.out.print("Ingrese el nuevo email del usuario: ");
-                    String nuevoEmailUsuario = scanner.nextLine();
-                    biblioteca.editarUsuario(emailEditar, nuevoNombreUsuario, nuevoEmailUsuario);
+                    biblioteca.editarUsuario();
                     break;
 
                 case 6:
                     // Eliminar usuario
-                    System.out.print("Ingrese el email del usuario a eliminar: ");
-                    String emailEliminar = scanner.nextLine();
-                    biblioteca.eliminarUsuario(emailEliminar);
+                    System.out.print("Ingrese el usuario del usuario a eliminar: ");
+                    String usu = scanner.nextLine();
+                    biblioteca.eliminarUsuario(usu);
                     break;
 
                 case 7:
@@ -104,7 +91,7 @@ public class ProyectoFinalGrupo3 {
                     System.out.print("Ingrese la fecha de devolución (dd/MM/yyyy): ");
                     String fechaDevolucionStr = scanner.nextLine();
                     Date fechaDevolucionInput = null;
-                    try {
+                    try { //revisar el try
                         fechaDevolucionInput = new java.text.SimpleDateFormat("dd/MM/yyyy").parse(fechaDevolucionStr);
                     } catch (Exception e) {
                         System.out.println("Fecha inválida.");
@@ -123,8 +110,8 @@ public class ProyectoFinalGrupo3 {
                 case 9:
                     // Mostrar prestamos
                     System.out.println("Ingrese el Usuario de la persona para mostrar el historial de prestamos");
-                    String usu = scanner.nextLine();
-                    biblioteca.mostrarPrestamosDeUsuario(usu);
+                    String usua = scanner.nextLine();
+                    biblioteca.mostrarPrestamosDeUsuario(usua);
                     break;
                 case 10:
                     // Salir

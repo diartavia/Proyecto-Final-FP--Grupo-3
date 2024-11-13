@@ -16,7 +16,9 @@ public class Libro {
         this.genero = genero;
         this.prestado = false;
     }
-    
+    public Libro(){
+        
+    }
     //get y sets
 
     //----------Titulo--------------//

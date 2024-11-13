@@ -2,8 +2,10 @@ package proyecto.pkgfinal.grupo.pkg3;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Scanner;
 
 public class Biblioteca {
+    Scanner sc = new Scanner(System.in);
     //"Atributos"
     private ArrayList<Libro> Libros; 
     private ArrayList<Usuario> Usuarios;
@@ -18,13 +20,21 @@ public class Biblioteca {
         Libros.add(nLibro);
     }
     //Editar libro por busqueda de ISBN
-    public void editarLibro (String isbn, String nuevoTitulo, String nuevoAutor, String nuevoGenero)
+    public void editarLibro ()
     {
+        System.out.print("Ingrese el ISBN del libro a editar: ");
+        String isbnEditar = sc.nextLine();
         for (Libro libro : Libros)
         {
-            if(libro.getISBN().equals(isbn))
+            if(libro.getISBN().equals(isbnEditar))
             {
             //Si encontramos el libro, actualizamos sus datos con la nueva información ingresada.
+            System.out.print("Ingrese el nuevo título del libro: ");
+            String nuevoTitulo = sc.nextLine();
+            System.out.print("Ingrese el nuevo autor del libro: ");
+            String nuevoAutor = sc.nextLine();
+            System.out.print("Ingrese el nuevo género del libro: ");
+            String nuevoGenero = sc.nextLine();
             libro.setTitulo(nuevoTitulo);
             libro.setAutor(nuevoAutor);
             libro.setGenero(nuevoGenero);
@@ -32,7 +42,7 @@ public class Biblioteca {
             return;
             }//Llave del if
         }//Llave del for
-        System.out.println("No se encontró un libro el ISBN ingresado: " + isbn);
+        System.out.println("No se encontró un libro el ISBN ingresado: " + isbnEditar);
     }
     
     //Mostrar libro por busqueda de ISBN
@@ -71,32 +81,41 @@ public class Biblioteca {
         Usuarios.add(nUsuario);
     }
     //Editar los datos de un usuario con base en su email
-    public void editarUsuario(String email, String nuevoUsuario, String nuevoEmail) 
+    public void editarUsuario() 
     {
+        System.out.print("Ingrese el nombre del usuario a editar: ");
+        String NombreUsuario = sc.nextLine();
         for (Usuario usuario : Usuarios) {
-            if (usuario.getEmail().equals(email)) {
+            if (usuario.getUsuario().equals(NombreUsuario)) {
                 // Se editan los atributos del usuario
-                usuario.setUsuario(nuevoUsuario);
-                usuario.setEmail(nuevoEmail);
+                System.out.print("Ingrese el nuevo nombre del usuario: ");
+                String NuevoNombreUsuario = sc.nextLine();
+                System.out.print("Ingrese el nuevo email del usuario: ");
+                String emailEditar = sc.nextLine();
+                System.out.print("Ingrese el nueva password del usuario: ");
+                String passwordeditar = sc.nextLine();
+                usuario.setUsuario(NuevoNombreUsuario);
+                usuario.setPassword(passwordeditar);
+                usuario.setEmail(emailEditar);
                 System.out.println("Nuevos datos del usuario: " + usuario);
                 return;
             }
         }
-        System.out.println("No se encontró un usuario con el email: " + email);
+        System.out.println("No se encontró un usuario con el usuario: " + NombreUsuario);
     }
     
-    //Eliminar un usuario con base en su email
-    public void eliminarUsuario(String email){
+    //Eliminar un usuario con base en su usuario
+    public void eliminarUsuario(String usu){
         for(int i = 0; i < Usuarios.size(); i++)
         {
-            if(Usuarios.get(i).getEmail().equals(email))
+            if(Usuarios.get(i).getEmail().equals(usu))
             {
-            Usuarios.remove(i);
-                System.out.println("El  usuario con el email" + email + "ha sido eliminado.");
+                Usuarios.remove(i);
+                System.out.println("El  usuario con el nombre de usuario" + usu + "ha sido eliminado.");
                 return;
             }//Llave del if   
         }//Llave del for
-        System.out.println("No se encontró un usuario con el email: " + email);
+        System.out.println("No se encontró un usuario con el nombre de usuario: " + usu);
     }
     //registrar prestamo
     public void registrarPrestamoAUsuario(String emailUsuario, String isbn, Date fechaDevolucion) {
