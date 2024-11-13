@@ -73,6 +73,45 @@ public class Biblioteca {
         }//Llave del for
         System.out.println("No se encontró el libro con el ISBN ingresado: " + isbn);
     }
+    public void devolverlibro(String nombreUsuario, String isbn){
+        Usuario usuario = null;
+        Prestamo prestamoEncontrado = null;
+
+        // Buscar al usuario por su nombre de usuario
+        for (Usuario u : Usuarios) {
+            if (u.getUsuario().equals(nombreUsuario)) {
+                usuario = u;
+                break;
+            }
+        }
+
+        if (usuario == null) {
+            System.out.println("Usuario con nombre " + nombreUsuario + " no encontrado.");
+            return;
+        }
+
+        // Buscar el préstamo específico del libro dentro del historial del usuario
+        for (Prestamo prestamo : usuario.getHistorialPrestamos()) {
+            if (prestamo.getLibroprestado().getISBN().equals(isbn)) {
+                prestamoEncontrado = prestamo;
+                break;
+            }
+        }
+
+        if (prestamoEncontrado == null) {
+            System.out.println("El usuario no tiene registrado un préstamo del libro con ISBN " + isbn);
+            return;
+        }
+
+        // Actualizar el estado del libro a no prestado
+        prestamoEncontrado.getLibroprestado().setPrestado(false);
+
+        // Remover el préstamo del historial del usuario
+        usuario.getHistorialPrestamos().remove(prestamoEncontrado);
+
+        System.out.println("El libro con ISBN " + isbn + " ha sido devuelto por el usuario " + nombreUsuario);
+
+    }
     //--------- fin
     
     //--------- Metodos para Usuario

@@ -23,8 +23,9 @@ public class ProyectoFinalGrupo3 {
             System.out.println("6. Eliminar usuario");
             System.out.println("7. Registrar prestamo");
             System.out.println("8. Buscar libro");
-            System.out.println("9. Mostrar historial de prestamos");
-            System.out.println("10. Salir");
+            System.out.println("9. Devolver un libro");
+            System.out.println("10. Mostrar historial de prestamos");
+            System.out.println("11. Salir");
             System.out.print("Seleccione una opción: ");
             opcion = scanner.nextInt();
             scanner.nextLine(); 
@@ -107,13 +108,22 @@ public class ProyectoFinalGrupo3 {
                     String id = scanner.nextLine();
                     biblioteca.MostrarLibro(id);
                     break;
+                    
                 case 9:
+                    // Devolver un prestamo
+                    System.out.println("Ingrese el Usuario de la persona");
+                    String usuar = scanner.nextLine();
+                    System.out.println("Y el ISBN para hacer la devolucion");
+                    String Isbn = scanner.nextLine();
+                    biblioteca.devolverlibro(usuar, Isbn);
+                    break;
+                case 10:
                     // Mostrar prestamos
                     System.out.println("Ingrese el Usuario de la persona para mostrar el historial de prestamos");
                     String usua = scanner.nextLine();
                     biblioteca.mostrarPrestamosDeUsuario(usua);
                     break;
-                case 10:
+                case 11:
                     // Salir
                     System.out.println("Saliendo del sistema...");
                     break;
