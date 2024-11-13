@@ -157,31 +157,33 @@ public class Biblioteca {
         System.out.println("No se encontró un usuario con el nombre de usuario: " + usu);
     }
     //registrar prestamo
-    public void registrarPrestamoAUsuario(String emailUsuario, String isbn, Date fechaDevolucion) {
+    public void registrarPrestamoAUsuario() {
         Usuario usuario = null;
         Libro libro = null;
-
+        System.out.print("Ingrese el nombre de usuario: ");
+        String nameUsuarioPrestamo = sc.nextLine();
         // Busca al usuario por email
         for (Usuario u : Usuarios) {
-            if (u.getEmail().equals(emailUsuario)) {
+            if (u.getEmail().equals(nameUsuarioPrestamo)) {
                 usuario = u;
                 break;
             }
         }
         if (usuario == null) { //si el usuario no se encontro, el valor de usuario no cambio,  por ende sigue null, por eso se saldria
-            System.out.println("Usuario con email " + emailUsuario + " no encontrado");
+            System.out.println("Usuario con nombre de usuario: " + nameUsuarioPrestamo + " no encontrado");
             return;
         }
-
+        System.out.print("Ingrese el ISBN del libro a prestar: ");
+        String isbnPrestamo = sc.nextLine();
         // Busca el libro por ISBN
         for (Libro l : Libros) {
-            if (l.getISBN().equals(isbn)) {
+            if (l.getISBN().equals(isbnPrestamo)) {
                 libro = l;
                 break;
             }
         }
         if (libro == null) {
-            System.out.println("Libro con ISBN " + isbn + " desconocido");
+            System.out.println("Libro con ISBN " + isbnPrestamo + " desconocido");
             return; //se sale si es desconocido 
         }
         //para saber si ya esta prestado
@@ -189,12 +191,24 @@ public class Biblioteca {
             System.out.println("El libro ya esta prestado");
             return; //se sale si ya esta prestado
         }
-
+        
+        System.out.print("Ingrese la fecha de devolución (dd/MM/yyyy): ");
+        String fechaDevolucionStr = sc.nextLine();
+        Date fechaDevolucionInput = null;
+        try { //revisar el try
+            fechaDevolucionInput = new java.text.SimpleDateFormat("dd/MM/yyyy").parse(fechaDevolucionStr);
+        } catch (Exception e) {
+            System.out.println("Fecha inválida.");
+        }
+        if (fechaDevolucionInput != null) {
+            Prestamo nuevoPrestamo = new Prestamo(libro, new Date(), fechaDevolucionInput); //cambiar el tipo DATE
+            usuario.agregarPrestamo(nuevoPrestamo);
+            System.out.println("Prestamo registrado para el usuario: " + usuario.getUsuario());
+        }
         // Crear y asigna el prestamo al usuario
-        Prestamo nuevoPrestamo = new Prestamo(libro, new Date(), fechaDevolucion); //cambiar el tipo DATE
-        usuario.agregarPrestamo(nuevoPrestamo);
 
-        System.out.println("Prestamo registrado para el usuario: " + usuario.getEmail());
+
+        
     }//llave registrarPrestamoAUsuario
     
     //mostrar prestamos

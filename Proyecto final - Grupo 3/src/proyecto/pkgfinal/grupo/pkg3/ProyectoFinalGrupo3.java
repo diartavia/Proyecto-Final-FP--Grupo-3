@@ -26,7 +26,7 @@ public class ProyectoFinalGrupo3 {
             System.out.println("9. Devolver un libro");
             System.out.println("10. Mostrar historial de prestamos");
             System.out.println("11. Salir");
-            System.out.print("Seleccione una opción: ");
+            System.out.print("Seleccione una opcion: ");
             opcion = scanner.nextInt();
             scanner.nextLine(); 
             
@@ -85,21 +85,7 @@ public class ProyectoFinalGrupo3 {
 
                 case 7:
                     // Registrar préstamo
-                    System.out.print("Ingrese el email del usuario: ");
-                    String emailUsuarioPrestamo = scanner.nextLine();
-                    System.out.print("Ingrese el ISBN del libro a prestar: ");
-                    String isbnPrestamo = scanner.nextLine();
-                    System.out.print("Ingrese la fecha de devolución (dd/MM/yyyy): ");
-                    String fechaDevolucionStr = scanner.nextLine();
-                    Date fechaDevolucionInput = null;
-                    try { //revisar el try
-                        fechaDevolucionInput = new java.text.SimpleDateFormat("dd/MM/yyyy").parse(fechaDevolucionStr);
-                    } catch (Exception e) {
-                        System.out.println("Fecha inválida.");
-                    }
-                    if (fechaDevolucionInput != null) {
-                        biblioteca.registrarPrestamoAUsuario(emailUsuarioPrestamo, isbnPrestamo, fechaDevolucionInput);
-                    }
+                    biblioteca.registrarPrestamoAUsuario();
                     break;
 
                 case 8:
