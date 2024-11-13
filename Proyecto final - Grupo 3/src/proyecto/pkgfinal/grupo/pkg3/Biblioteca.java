@@ -42,7 +42,7 @@ public class Biblioteca {
             return;
             }//Llave del if
         }//Llave del for
-        System.out.println("No se encontró un libro el ISBN ingresado: " + isbnEditar);
+        System.out.println("No se encontro un libro el ISBN ingresado: " + isbnEditar);
     }
     
     //Mostrar libro por busqueda de ISBN
@@ -71,7 +71,7 @@ public class Biblioteca {
                 return;
             }//Llave del if
         }//Llave del for
-        System.out.println("No se encontró el libro con el ISBN ingresado: " + isbn);
+        System.out.println("No se encontro el libro con el ISBN ingresado: " + isbn);
     }
     public void devolverlibro(){
         Usuario usuario = null;
@@ -104,7 +104,7 @@ public class Biblioteca {
         }
 
         if (prestamoEncontrado == null) {
-            System.out.println("El usuario no tiene registrado un préstamo del libro con ISBN " + Isbn);
+            System.out.println("El usuario no tiene registrado un prestamo del libro con ISBN " + Isbn);
             return;
         }
 
@@ -145,7 +145,7 @@ public class Biblioteca {
                 return;
             }
         }
-        System.out.println("No se encontró un usuario con el usuario: " + NombreUsuario);
+        System.out.println("No se encontro un usuario con el usuario: " + NombreUsuario);
     }
     
     //Eliminar un usuario con base en su usuario
@@ -159,7 +159,7 @@ public class Biblioteca {
                 return;
             }//Llave del if   
         }//Llave del for
-        System.out.println("No se encontró un usuario con el nombre de usuario: " + usu);
+        System.out.println("No se encontro un usuario con el nombre de usuario: " + usu);
     }
     //registrar prestamo
     public void registrarPrestamoAUsuario() {
