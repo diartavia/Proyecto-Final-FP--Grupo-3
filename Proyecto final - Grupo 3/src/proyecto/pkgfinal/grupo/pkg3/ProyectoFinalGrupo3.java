@@ -97,11 +97,7 @@ public class ProyectoFinalGrupo3 {
                     
                 case 9:
                     // Devolver un prestamo
-                    System.out.println("Ingrese el Usuario de la persona");
-                    String usuar = scanner.nextLine();
-                    System.out.println("Y el ISBN para hacer la devolucion");
-                    String Isbn = scanner.nextLine();
-                    biblioteca.devolverlibro(usuar, Isbn);
+                    biblioteca.devolverlibro();
                     break;
                 case 10:
                     // Mostrar prestamos

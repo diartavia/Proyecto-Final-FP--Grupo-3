@@ -73,33 +73,38 @@ public class Biblioteca {
         }//Llave del for
         System.out.println("No se encontró el libro con el ISBN ingresado: " + isbn);
     }
-    public void devolverlibro(String nombreUsuario, String isbn){
+    public void devolverlibro(){
         Usuario usuario = null;
         Prestamo prestamoEncontrado = null;
-
+        
+        System.out.println("Ingrese el Usuario de la persona");
+        String usuar = sc.nextLine();
         // Buscar al usuario por su nombre de usuario
         for (Usuario u : Usuarios) {
-            if (u.getUsuario().equals(nombreUsuario)) {
+            if (u.getUsuario().equals(usuar)) {
                 usuario = u;
                 break;
             }
         }
 
         if (usuario == null) {
-            System.out.println("Usuario con nombre " + nombreUsuario + " no encontrado.");
+            System.out.println("Usuario con nombre " + usuar + " no encontrado.");
             return;
         }
 
+        
+        System.out.println("Y el ISBN para hacer la devolucion");
+        String Isbn = sc.nextLine();
         // Buscar el préstamo específico del libro dentro del historial del usuario
         for (Prestamo prestamo : usuario.getHistorialPrestamos()) {
-            if (prestamo.getLibroprestado().getISBN().equals(isbn)) {
+            if (prestamo.getLibroprestado().getISBN().equals(Isbn)) {
                 prestamoEncontrado = prestamo;
                 break;
             }
         }
 
         if (prestamoEncontrado == null) {
-            System.out.println("El usuario no tiene registrado un préstamo del libro con ISBN " + isbn);
+            System.out.println("El usuario no tiene registrado un préstamo del libro con ISBN " + Isbn);
             return;
         }
 
@@ -109,7 +114,7 @@ public class Biblioteca {
         // Remover el préstamo del historial del usuario
         usuario.getHistorialPrestamos().remove(prestamoEncontrado);
 
-        System.out.println("El libro con ISBN " + isbn + " ha sido devuelto por el usuario " + nombreUsuario);
+        System.out.println("El libro con ISBN " + Isbn + " ha sido devuelto por el usuario " + usuar);
 
     }
     //--------- fin
