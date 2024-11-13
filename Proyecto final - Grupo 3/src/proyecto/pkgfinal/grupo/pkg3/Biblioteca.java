@@ -162,7 +162,7 @@ public class Biblioteca {
         System.out.println("No se encontro un usuario con el nombre de usuario: " + usu);
     }
     //registrar prestamo
-    public void registrarPrestamoAUsuario() {
+    public void registrarPrestamoAUsuario(Date fechaDevolucionInput) {
         Usuario usuario = null;
         Libro libro = null;
         System.out.print("Ingrese el nombre de usuario: ");
@@ -197,19 +197,11 @@ public class Biblioteca {
             return; //se sale si ya esta prestado
         }
         
-        System.out.print("Ingrese la fecha de devolución (dd/MM/yyyy): ");
-        String fechaDevolucionStr = sc.nextLine();
-        Date fechaDevolucionInput = null;
-        try { //revisar el try
-            fechaDevolucionInput = new java.text.SimpleDateFormat("dd/MM/yyyy").parse(fechaDevolucionStr);
-        } catch (Exception e) {
-            System.out.println("Fecha inválida.");
-        }
-        if (fechaDevolucionInput != null) {
+
             Prestamo nuevoPrestamo = new Prestamo(libro, new Date(), fechaDevolucionInput); //cambiar el tipo DATE
             usuario.agregarPrestamo(nuevoPrestamo);
             System.out.println("Prestamo registrado para el usuario: " + usuario.getUsuario());
-        }
+        
         // Crear y asigna el prestamo al usuario
 
 

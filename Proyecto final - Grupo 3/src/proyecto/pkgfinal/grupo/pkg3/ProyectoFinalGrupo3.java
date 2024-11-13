@@ -85,7 +85,8 @@ public class ProyectoFinalGrupo3 {
 
                 case 7:
                     // Registrar préstamo
-                    biblioteca.registrarPrestamoAUsuario();
+                    Date fechaDevolucion = new Date(System.currentTimeMillis() + 7L * 24 * 60 * 60 * 1000);  // Una semana después
+                    biblioteca.registrarPrestamoAUsuario(fechaDevolucion);
                     break;
 
                 case 8:
@@ -112,7 +113,7 @@ public class ProyectoFinalGrupo3 {
                 default:
                     System.out.println("Opción no válida. Intente nuevamente.");
             }
-        }while (opcion != 10);
+        }while (opcion != 11);
 
         
         
