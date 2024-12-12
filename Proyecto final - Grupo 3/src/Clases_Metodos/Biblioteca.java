@@ -1,5 +1,6 @@
 package Clases_Metodos;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
@@ -151,10 +152,10 @@ public class Biblioteca {
         JOptionPane.showMessageDialog(null, "No se encontro un usuario con el nombre de usuario: " + usu);
     }
     //registrar prestamo
-    public void registrarPrestamoAUsuario(Date fechaDevolucionInput) {
+    public void registrarPrestamoAUsuario(String ISBN) {
         Usuario usuario = null;
         Libro libro = null;
-        System.out.print("Ingrese el nombre de usuario: ");
+        JOptionPane.showInputDialog("Ingrese el nombre de usuario: ");
         String nameUsuarioPrestamo = sc.nextLine();
         // Busca al usuario por email
         for (Usuario u : Usuarios) {
@@ -168,7 +169,7 @@ public class Biblioteca {
             return;
         }
         System.out.print("Ingrese el ISBN del libro a prestar: ");
-        String isbnPrestamo = sc.nextLine();
+        String isbnPrestamo = ISBN;
         // Busca el libro por ISBN
         for (Libro l : Libros) {
             if (l.getISBN().equals(isbnPrestamo)) {
@@ -186,10 +187,12 @@ public class Biblioteca {
             return; //se sale si ya esta prestado
         }
         
+        LocalDate fechaprestado = LocalDate.now();
 
-            Prestamo nuevoPrestamo = new Prestamo(libro, new Date(), fechaDevolucionInput); //cambiar el tipo DATE
-            usuario.agregarPrestamo(nuevoPrestamo);
-            System.out.println("Prestamo registrado para el usuario: " + usuario.getUsuario());
+        LocalDate fechaDev = fechaprestado.plusDays(30);
+        Prestamo nuevoPrestamo = new Prestamo(libro, fechaprestado, fechaDev); //cambiar el tipo DATE
+        usuario.agregarPrestamo(nuevoPrestamo);
+        System.out.println("Prestamo registrado para el usuario: " + usuario.getUsuario());
         
         // Crear y asigna el prestamo al usuario
 

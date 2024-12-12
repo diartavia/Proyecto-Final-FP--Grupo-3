@@ -1,15 +1,16 @@
 package Clases_Metodos;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Prestamo{
     //variables
     private Libro libroprestado;
-    private Date fechaprestamo; //cambiar el tipo DATE
-    private Date fechadevolucion; //cambiar el tipo DATE
+    private LocalDate fechaprestamo; //cambiar el tipo DATE
+    private LocalDate fechadevolucion; //cambiar el tipo DATE
     
     //constructor
-    public Prestamo(Libro libroprestado, Date fechaprestamo, Date fechadevolucion) {
+    public Prestamo(Libro libroprestado, LocalDate fechaprestamo, LocalDate fechadevolucion) {
         this.libroprestado = libroprestado;
         this.fechaprestamo = fechaprestamo;
         this.fechadevolucion = fechadevolucion;
@@ -28,19 +29,19 @@ public class Prestamo{
         this.libroprestado = libroprestado;
     }
     //------------Fecha presamo----------------//
-    public Date getFechaprestamo() {
+    public LocalDate getFechaprestamo() {
         return fechaprestamo;
     }
 
-    public void setFechaprestamo(Date fechaprestamo) {
+    public void setFechaprestamo(LocalDate fechaprestamo) {
         this.fechaprestamo = fechaprestamo;
     }
     //------------Fecha devolucion----------------//
-    public Date getFechadevolucion() {
+    public LocalDate getFechadevolucion() {
         return fechadevolucion;
     }
 
-    public void setFechadevolucion(Date fechadevolucion) {
+    public void setFechadevolucion(LocalDate fechadevolucion) {
         this.fechadevolucion = fechadevolucion;
     }
     
