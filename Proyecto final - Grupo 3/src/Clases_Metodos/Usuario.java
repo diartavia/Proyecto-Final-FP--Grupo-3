@@ -1,4 +1,4 @@
-package proyecto.pkgfinal.grupo.pkg3;
+package Clases_Metodos;
 
 import java.util.ArrayList;
 
@@ -11,7 +11,7 @@ public class Usuario {
     private ArrayList<Prestamo> historialPrestamos;
     
     //constructor 
-    public Usuario(String email, String password, String usuario) {
+    public Usuario(String usuario, String email, String password) {
         this.Usuario = usuario;
         this.email = email;
         this.password = password;
