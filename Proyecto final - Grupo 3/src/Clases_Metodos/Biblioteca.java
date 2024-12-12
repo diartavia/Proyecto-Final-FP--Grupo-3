@@ -139,14 +139,14 @@ public class Biblioteca {
     public void eliminarUsuario(String usu){
         for(int i = 0; i < Usuarios.size(); i++)
         {
-            if(Usuarios.get(i).getEmail().equals(usu))
+            if(Usuarios.get(i).getUsuario().equals(usu))
             {
                 if (JOptionPane.showConfirmDialog(null, "Desea eliminar el objeto")==0) {
                     Usuarios.remove(i);
                     JOptionPane.showMessageDialog(null, "El  usuario con el nombre de usuario - " + usu + " - ha sido eliminado.");
                     return;
                 }
-            }//Llave del if   
+            }//Llave del if  
         }//Llave del for
         JOptionPane.showMessageDialog(null, "No se encontro un usuario con el nombre de usuario: " + usu);
     }

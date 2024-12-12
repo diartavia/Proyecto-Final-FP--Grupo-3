@@ -27,8 +27,12 @@ public class FrameAdmin extends javax.swing.JFrame {
     }//Set modelo
     
     private void setDatos(){
-        Object[] fila = new Object[modelo.getColumnCount()];
-        for (Usuario recorre: biblioteca.getUsuarios()) {
+        // Limpiar todas las filas existentes en el modelo
+        modelo.setRowCount(0);
+
+        // Recorrer los usuarios del ArrayList y agregarlos a la tabla
+        for (Usuario recorre : biblioteca.getUsuarios()) {
+            Object[] fila = new Object[modelo.getColumnCount()];
             fila[0] = recorre.getUsuario();
             fila[1] = recorre.getEmail();
             fila[2] = recorre.getPassword();
@@ -36,6 +40,8 @@ public class FrameAdmin extends javax.swing.JFrame {
             fila[4] = recorre.getHistorialPrestamos();
             modelo.addRow(fila);
         }
+
+        // Establecer el modelo actualizado en la tabla
         this.ventana.TablaUsu.setModel(modelo);
     }
     

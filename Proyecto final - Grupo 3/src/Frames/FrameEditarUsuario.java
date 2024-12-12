@@ -190,8 +190,8 @@ public class FrameEditarUsuario extends javax.swing.JFrame {
         user.setEmail(TF_Email_editar.getText());
         user.setPassword(TF_Contrasena_editar.getText());
         
-        System.out.println(user.toString());
-        
+        System.out.println("El usuario es: "+user.toString());
+        this.dispose();
     }//GEN-LAST:event_btn_editarActionPerformed
 
     private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
