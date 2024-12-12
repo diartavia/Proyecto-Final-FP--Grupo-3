@@ -1,4 +1,4 @@
-package proyecto.pkgfinal.grupo.pkg3;
+package Clases_Metodos;
 
 public class Libro {
    //En esta clase se va a pedir los datos para el libro

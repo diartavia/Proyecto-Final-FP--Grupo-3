@@ -1,18 +1,30 @@
-package proyecto.pkgfinal.grupo.pkg3;
+package Clases_Metodos;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class Biblioteca {
+    private static Biblioteca instance;
+    
     Scanner sc = new Scanner(System.in);
     //"Atributos"
     private ArrayList<Libro> Libros; 
     private ArrayList<Usuario> Usuarios;
+    
     //Constructor
-    public Biblioteca() {
+    private Biblioteca() {
         this.Libros = new ArrayList<>();
         this.Usuarios = new ArrayList<>();
+    }
+    //Metodo para trabajar con una sola biblioteca
+    public static Biblioteca getInstance(){
+        if (instance == null) {
+            Biblioteca.instance = new Biblioteca();
+        }
+        return instance;
     }
     //--------- Metodos para libro
     //Agregar libros
@@ -43,8 +55,7 @@ public class Biblioteca {
             }//Llave del if
         }//Llave del for
         System.out.println("No se encontro un libro el ISBN ingresado: " + isbnEditar);
-    }
-    
+    } 
     //Mostrar libro por busqueda de ISBN
     public void MostrarLibro (String isbn)
     {
@@ -124,48 +135,27 @@ public class Biblioteca {
     public void nuevoUsuario(Usuario nUsuario){
         Usuarios.add(nUsuario);
     }
-    //Editar los datos de un usuario con base en su email
-    public void editarUsuario() 
-    {
-        System.out.print("Ingrese el nombre del usuario a editar: ");
-        String NombreUsuario = sc.nextLine();
-        for (Usuario usuario : Usuarios) {
-            if (usuario.getUsuario().equals(NombreUsuario)) {
-                // Se editan los atributos del usuario
-                System.out.print("Ingrese el nuevo nombre del usuario: ");
-                String NuevoNombreUsuario = sc.nextLine();
-                System.out.print("Ingrese el nuevo email del usuario: ");
-                String emailEditar = sc.nextLine();
-                System.out.print("Ingrese el nueva password del usuario: ");
-                String passwordeditar = sc.nextLine();
-                usuario.setUsuario(NuevoNombreUsuario);
-                usuario.setPassword(passwordeditar);
-                usuario.setEmail(emailEditar);
-                System.out.println("Nuevos datos del usuario: " + usuario);
-                return;
-            }
-        }
-        System.out.println("No se encontro un usuario con el usuario: " + NombreUsuario);
-    }
     
     //Eliminar un usuario con base en su usuario
     public void eliminarUsuario(String usu){
         for(int i = 0; i < Usuarios.size(); i++)
         {
-            if(Usuarios.get(i).getEmail().equals(usu))
+            if(Usuarios.get(i).getUsuario().equals(usu))
             {
-                Usuarios.remove(i);
-                System.out.println("El  usuario con el nombre de usuario" + usu + "ha sido eliminado.");
-                return;
-            }//Llave del if   
+                if (JOptionPane.showConfirmDialog(null, "Desea eliminar el objeto")==0) {
+                    Usuarios.remove(i);
+                    JOptionPane.showMessageDialog(null, "El  usuario con el nombre de usuario - " + usu + " - ha sido eliminado.");
+                    return;
+                }
+            }//Llave del if  
         }//Llave del for
-        System.out.println("No se encontro un usuario con el nombre de usuario: " + usu);
+        JOptionPane.showMessageDialog(null, "No se encontro un usuario con el nombre de usuario: " + usu);
     }
     //registrar prestamo
-    public void registrarPrestamoAUsuario(Date fechaDevolucionInput) {
+    public void registrarPrestamoAUsuario(String ISBN) {
         Usuario usuario = null;
         Libro libro = null;
-        System.out.print("Ingrese el nombre de usuario: ");
+        JOptionPane.showInputDialog("Ingrese el nombre de usuario: ");
         String nameUsuarioPrestamo = sc.nextLine();
         // Busca al usuario por email
         for (Usuario u : Usuarios) {
@@ -179,7 +169,7 @@ public class Biblioteca {
             return;
         }
         System.out.print("Ingrese el ISBN del libro a prestar: ");
-        String isbnPrestamo = sc.nextLine();
+        String isbnPrestamo = ISBN;
         // Busca el libro por ISBN
         for (Libro l : Libros) {
             if (l.getISBN().equals(isbnPrestamo)) {
@@ -197,10 +187,12 @@ public class Biblioteca {
             return; //se sale si ya esta prestado
         }
         
+        LocalDate fechaprestado = LocalDate.now();
 
-            Prestamo nuevoPrestamo = new Prestamo(libro, new Date(), fechaDevolucionInput); //cambiar el tipo DATE
-            usuario.agregarPrestamo(nuevoPrestamo);
-            System.out.println("Prestamo registrado para el usuario: " + usuario.getUsuario());
+        LocalDate fechaDev = fechaprestado.plusDays(30);
+        Prestamo nuevoPrestamo = new Prestamo(libro, fechaprestado, fechaDev); //cambiar el tipo DATE
+        usuario.agregarPrestamo(nuevoPrestamo);
+        System.out.println("Prestamo registrado para el usuario: " + usuario.getUsuario());
         
         // Crear y asigna el prestamo al usuario
 
@@ -225,4 +217,13 @@ public class Biblioteca {
 
     //--------- fin
 
+    public ArrayList<Libro> getLibros() {
+        return Libros;
+    }
+
+    public ArrayList<Usuario> getUsuarios() {
+        return Usuarios;
+    }
+
+    
 }
